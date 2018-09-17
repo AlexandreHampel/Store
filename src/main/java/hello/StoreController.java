@@ -11,14 +11,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Controller
-public class StoreController implements WebMvcConfigurer {
+public class StoreController {
     
 	private final StoreRepository repository;
-	
-    @Override
-   public void addViewControllers(ViewControllerRegistry registry) {
-       registry.addViewController("/productslist").setViewName("productslist");
-   }
 
 	public StoreController(StoreRepository store) {
 		this.repository = store;
@@ -29,21 +24,23 @@ public class StoreController implements WebMvcConfigurer {
         return "index";
     }
 
-    @GetMapping("/productslist")
-    public String showProductsList(/*Model model*/                                                                                                                            ){
-        //model.addAttribute("productsList", repository.findAll());
-        return "productslist";
+    @GetMapping("/products")
+    public String showProductsList(Model model) {
+        model.addAttribute("productsList", repository.findAll());
+        return "products";
     }
-	
-	//  @GetMapping("/products")
-    // public String showNew() {
-    //     return "";
-    // }
 
-    /*@PostMapping("/")
-    public String saveMessage(@ModelAttribute(name="message")Message message, BindingResult result) {
-    	repository.save(message);  
+    /*@PostMapping("/products")
+    public String newProduct(Product product) {
+    	repository.save(product);  
 
-        return "redirect:/";
+        return "products";
+    }
+
+    @PostMapping("/products")
+    public String deleteproduct(Product product) {
+    	repository.delete(product);  
+
+        return "products";
     }*/
 }

@@ -6,7 +6,7 @@
 	<body onload="onload();">
 	<h1> <center>Products List</center> </h1>
 		<center><table cellspacing="50" class="table" style="margin-left:0px;magin-top:100px">		</center>
-			<!-- <tbody>
+			<tbody>
 				<tr th:if="${productsList.empty}">
 	            	<td colspan="2"> <h1> Nenhum produto cadastrado. <h1> </td>
 	        	</tr>
@@ -14,7 +14,7 @@
 	        	<tr th:each="p : ${productsList}">
 	            	<td><span th:text="${p.name}"> Produtos </span></td>
 	        	</tr>       	 
-			</tbody> -->
+			</tbody>
 		</table>
 	</body>
 </HTML> 
