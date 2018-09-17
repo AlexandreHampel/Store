@@ -3,12 +3,14 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
 
 @Entity
 @Table(name = "Products")
 public class Product{
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_products")
+	@SequenceGenerator(name="seq_products", sequenceName="seq_products")
 	private int id;
 	private String name;
 	private double price;
