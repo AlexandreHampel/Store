@@ -11,10 +11,15 @@ import java.util.Collection;
 import java.util.List;
 
 @Controller
-public class StoreController {
-	
+public class StoreController implements WebMvcConfigurer {
+    
 	private final StoreRepository repository;
 	
+    @Override
+   public void addViewControllers(ViewControllerRegistry registry) {
+       registry.addViewController("/productslist").setViewName("productslist");
+   }
+
 	public StoreController(StoreRepository store) {
 		this.repository = store;
 	}
@@ -22,6 +27,12 @@ public class StoreController {
     @GetMapping("/")
     public String showIndex() {
         return "index";
+    }
+
+    @GetMapping("/productslist")
+    public String showProductsList(/*Model model*/                                                                                                                            ){
+        //model.addAttribute("productsList", repository.findAll());
+        return "productslist";
     }
 	
 	//  @GetMapping("/products")
