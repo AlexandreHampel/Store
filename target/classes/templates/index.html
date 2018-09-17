@@ -10,13 +10,19 @@
 </head>
 <body>
     <h1> Lojinha da doideira </h1>
-    <input type="text" placeholder="Search a product..."/>
-    <button name="button">Search</button>
-
+    <form th:action="@{/}" method="GET">
+        <input type="text" placeholder="Search a product..."/>
+        <button name="button" type="submit">Search</button>
+    </form>
     <br>    <!-- TO DO: CSS FILE  !!! BAD PRACTICE !!! -->
-    <button name="button">List All Products</button>
+    <form th:action="@{/products}" method="GET">
+        <button type="submit">List All Products</button>
+    </form>
     <br>
-    <button name="button">Add a new product</button>
+    <!-- <form th:action="@{/newproduct}" method="GET">
+        <button type="submit">Add a new product</button>
+    </form> -->
 
+    <a href="/newproduct">Add a new product</a>
 </body>
 </html>

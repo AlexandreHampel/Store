@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.Collection;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class StoreController {
@@ -30,17 +31,18 @@ public class StoreController {
         return "products";
     }
 
-    /*@PostMapping("/products")
-    public String newProduct(Product product) {
-    	repository.save(product);  
-
-        return "products";
+    @GetMapping("/newproduct")
+    public String showNewProduct() {
+        return "newproduct";
     }
 
-    @PostMapping("/products")
-    public String deleteproduct(Product product) {
-    	repository.delete(product);  
+    @PostMapping("/newproduct")
+    public String newProduct(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		Double price = Double.parseDouble(request.getParameter("price"));
 
-        return "products";
-    }*/
+		repository.save(new Product(name, price));
+		
+		return "redirect:/";
+    }
 }
