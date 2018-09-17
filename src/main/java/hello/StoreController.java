@@ -45,4 +45,10 @@ public class StoreController {
 		
 		return "redirect:/";
     }
+
+    @GetMapping("/produtos/{id}")     Produto one(@PathVariable Integer id) {         //return repository.findById(id);         return repository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));     }
+     @GetMapping("/product/{id}")
+    public String showProduct() {
+        return "newproduct";
+    }
 }

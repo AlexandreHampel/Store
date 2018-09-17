@@ -12,7 +12,7 @@
 	        	</tr>
 				
 	        	<tr th:each="p : ${productsList}">
-	            	<td><span th:text="${p.name}"> Produtos </span></td>
+	            	<td><span th:text="${p.name} + 'Price: R$' + ${p.price} + 'Id: ' + ${p.id}"></span></td>
 	        	</tr>       	 
 			</tbody>
 		</table>
